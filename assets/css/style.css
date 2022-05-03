@@ -1,8 +1,44 @@
-#photos {
-display: inline-block;
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+body {
+    font-family: fantasy;
+    color: brown; 
+background-image: url(../images/foglie-verticale.jpg);
+background-position: right;
+background-size: 100%;
+background-repeat: no-repeat;
+}
+h1, h2 {
+    font-weight: bold;
+    color: rgb(106, 8, 8);
+}
+header {
+    margin: 30px;
+}
+#logo {
+    float:left;
+}
+#nav-bar {
+    font-size: 120%;
+    color: brown;
+}
+#nav-bar li {
+    float: right;
+    list-style-type: none;
+    margin-right: 10px;
 }
 
+#photos {
+    clear:both
+    line-height: 0;
+    column-count: 6;
+    column-gap: 0;
+    margin-top: 60px;
+    
+}
 #photos > img {
-    width: 13%;
-    height: 13%;
+    width: 100%;
 }
