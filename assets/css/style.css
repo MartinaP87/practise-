@@ -74,7 +74,10 @@ h1, h2, h3, h4 {
  .square h3 {
      text-align: left;
      font-weight: bold; 
-     padding: 40px 0 3px 3px; 
+     padding: 40px 0 3px 3px;  
+ }
+ .square a {
+     color: #401b0c;
  }
 .tab {
     width:70%;
