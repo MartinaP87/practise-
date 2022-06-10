@@ -1,6 +1,4 @@
 
-
-
 let dictionary = [["lots", "1"], ["of", "2"], ["words", "3"], ["from", "4"], 
 ["vocabulary", "5"], ["picked", "6"], ["by", "7"], ["me", "8"]]
 /**
@@ -11,40 +9,35 @@ function pickWord () {
     let ind1 = Math.floor(Math.random() * 7) ;
     return dictionary[ind1][0]
 }
-let pickedWord = pickWord()
-pickWord()
-document.getElementById("game-area").innerText = "<p>bo</p>";
-/**
- * function to hide the letters of the picked world and
- * display the letter when guessed right
- */
-function hide() {
-   
-        // document.getElementById(sub-game-area).innerText = "_ ";
-       let boxes = document.createElement("div");
-       boxes.className = "letters";
+let pickedWord = pickWord();
+pickWord();
 
-       document.getElementById("game-area").appendChild(boxes);
+/**
+ * create divs in base of the number of letters of the picked word 
+ */
+let boxes = '';
+    for (let i = 0; i < pickedWord.length; i++) {
+        boxes += `
+        <div class="letters">
+        ${pickedWord[i]}
+        </div>
+        `;
     }
-    hide()
+    console.log(boxes);
+document.getElementById("game-area").innerHTML = boxes;
+   
 
 for (let i = 0; i < pickedWord.length; i++) 
 document.getElementsByClassName("letters").innerText = 
 
-let playground = document.getElementsByTagName("body")
-playground.addEventListener("onkeyup", show)
-function show(event){
-    for (i = 0; i < pickedWord.length; i++) {
-    if (event.key === pickedWord[i]) {
+body.addEventListener("onkeyup", show);
 
-    }
- } else {
+function show(event) 
+  // for (i = 0; i < pickedWord.length; i++) 
+   // if (event.key === pickedWord[i])  
 
-    }
-}
+    
 
 function runGame() 
 function incrementScore() 
-function incrementWrongAnswer() {
-
-}
+function incrementWrongAnswer()
