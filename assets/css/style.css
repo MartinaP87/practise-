@@ -1,4 +1,4 @@
-.letters {
+.container {
     color: white;
     width: 50px;
     height: 50px;
@@ -9,8 +9,7 @@
     display: inline-block;
     float: left;
 }
-#game-area {
-    width: 1000px;
-    height: 1000px;
-    border: 1px solid black;
+h2 {
+    visibility: hidden;
+    color:black;
 }
