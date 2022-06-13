@@ -7,9 +7,18 @@
     background-color: blue;
     margin: 2px;
     display: inline-block;
-    float: left;
+    text-align: center;
 }
 h2 {
     visibility: hidden;
     color:black;
+}
+#theman {
+    
+    background-image: url(../images/img0.png);
+    width: 40%;
+    height: 300px;
+    background-repeat: no-repeat;
+    padding: 30px;
+    text-align: center;
 }
