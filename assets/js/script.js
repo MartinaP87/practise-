@@ -7,12 +7,14 @@ let dictionary = [["lots", "1"], ["of", "2"], ["words", "3"], ["from", "4"],
  */
 function pickWord () {
     let ind1 = Math.floor(Math.random() * 7) ;
-    return dictionary[ind1][0]
+    return dictionary[ind1];
 }
-let pickedWord = pickWord();
+let pickedWord = pickWord()[0];
+let pickedWordMeaning = pickWord()[1];
 pickWord();
 
 console.log(pickedWord);
+console.log(pickedWordMeaning);
 
 /**
  * Create divs in base of the number of letters with their respective letters in them.
@@ -61,16 +63,22 @@ function incrementWrongAnswer() {
     
     if (n < 6) {
         n++;
-        doomed.style.backgroundImage = `url(../images/img6.png)`;
-        doomed.style.zIndex = 1;
-    } else if (n === 6){
-        
+        doomed.style.backgroundImage = `url(assets/images/img${n}.png)`;}
+     if ( n === 6) {
+         
          console.log("wrong");
          
-    }
-  
-    console.log(n);
-    console.log(`doomed.style.backgroundImage = "url(../images/img${n}.png)"`);
+         document.getElementById("final-message").innerHTML = `
+        <h3>Oh nooo!</h3>
+        <h3>You haven't found the word this time... but, if you learn from a loss you have not lost!</h3>
+        <h3>The word was:</h3>
+        <h4><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></h4>
+        `;
+
+         }
+   
+    console.log(n);   
+    
 };
 
 
@@ -89,7 +97,12 @@ function victory(event) {
             
     if (results.length === letters.length && results[i] === "true") {
         console.log("ok");
-        break
+        doomed.style.backgroundImage = `url(assets/images/imgvic.png)`;
+        document.getElementById("final-message").innerHTML = `
+        <h3>Congratulations! You found the word!</h3>
+        <h4><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></h4>
+        `;
+        doomed.style.backgroundImage = "none";
         }
       }
     };
