@@ -23,6 +23,7 @@ h2 {
     text-align: center;
 }
 #final-message {
+    background-color: white;
     width: 40%;
     height: 50px;
     padding: 30px;
