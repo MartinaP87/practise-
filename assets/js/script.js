@@ -55,7 +55,7 @@ function keyPressed(event) {
 
   // Add key pressed in the input box. 
   inputLettersList.push(`  ${event.key}`);
-  inputBox.innerHTML= `
+  inputBox.innerHTML = `
         <h2>Letters tried:</h2>
         <h3> ${inputLettersList}</h3>
         `;
@@ -66,8 +66,8 @@ function keyPressed(event) {
     console.log("true");
     for (i = 0; i < pickedWord.length; i++) {
       if (event.key === pickedWord[i]) {
-        letters[i].style.visibility = "visible"; 
-      } 
+        letters[i].style.visibility = "visible";
+      }
     }
     victory();
   } else {
@@ -83,6 +83,7 @@ function keyPressed(event) {
 
 // This function change the image every time the answer is wrong 
 var n = 0;
+
 function incrementWrongLetter() {
   if (n < 6) {
     n++;
@@ -96,7 +97,9 @@ function incrementWrongLetter() {
         <h3>You haven't found the word this time... but, if you learn from a loss you have not lost!</h3>
         <h3>The word was:</h3>
         <p><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></p>
-        <a href="index.html">Try Again!</a>
+        <div class="restart">
+          <a href="index.html">Try Again!</a>
+        </div>
         `;
   }
 };
@@ -118,7 +121,9 @@ function victory() {
       messageBox.innerHTML = `
         <h3>Congratulations! You found the word!</h3>
         <p><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></p>
-        <a href="index.html">Try Again!</a>
+        <div class="restart">
+          <a href="index.html">Try Again!</a>
+        </div>
         `;
     }
   }

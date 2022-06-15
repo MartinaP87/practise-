@@ -5,8 +5,8 @@
 * {
     margin: 0;
     padding: 0;
-    border: none;   
-}
+    border: none;    
+}   
 body {
     background-image: url(../images/stock-photo-white-crumpled-paper-blue-graph-lines-515587750.jpg);
     background-repeat: no-repeat;
@@ -34,9 +34,15 @@ h2, h3 {
     height: 20rem;
     float: left;
     margin-top: 6rem;
-    margin-left: 4rem;
-   
+    margin-left: 4rem;  
 }
+#input-box > h2 {
+   padding-top: 3rem; 
+}
+#input-box > h3 {
+    padding: 60px; 
+ }
+ 
 #theman {
     background-image: url(../images/img0.png);
     width: 40%;
@@ -52,7 +58,13 @@ h2, h3 {
     width: 20%;
     height: 20rem;
     text-align: center;
+    margin-right: 4rem;
+    padding-top: 2rem;
     float: right;   
+}
+#final-message > p {
+    padding-top : 10px;
+    padding-bottom: 20px;
 }
 #boxes-area {
     padding-top: 50px;
@@ -72,11 +84,19 @@ h2, h3 {
     visibility: hidden;
     text-transform: uppercase;
 }
-#input-box > h2 {
-   padding-top: 3rem; 
+.restart {
+    height: 50px;
+    width: 80%;
+    background-image: url(../images/rubber.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 15px;
 }
-#input-box > h3 {
-    padding: 60px; 
- }
- 
+.restart > a {
+    padding-top: 5px;
+    font-family: "Finger Paint";
+    text-transform: uppercase;
+    color: black;
+}
 
