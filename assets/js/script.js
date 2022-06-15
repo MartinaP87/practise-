@@ -73,9 +73,7 @@ function keyPressed(event) {
   } else {
     incrementWrongLetter();
   };
-  //messageBox.style.backgroundColor === "aqua"
-//manBox.style.backgroundImage === `url(assets/images/imgvic.png)` || manBox.style.backgroundImage === `url(assets/images/img6.png
-  if (messageBox.style.backgroundImage === "url(assets/images/piece.png)") {
+  if ( messageBox.innerHTML) {
     document.body.removeEventListener("keypress", keyPressed);
     console.log("bastaaaa");
   }
@@ -91,15 +89,13 @@ function incrementWrongLetter() {
   }
   if (n === 6) {
     console.log("wrong");
-   // messageBox.style.backgroundColor = "aqua";
-   messageBox.style.backgroundImage = "url(assets/images/piece.png)";
     messageBox.innerHTML = `
         <h3>Oh nooo!</h3>
         <h3>You haven't found the word this time... but, if you learn from a loss you have not lost!</h3>
         <h3>The word was:</h3>
         <p><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></p>
         <div class="restart">
-          <a href="index.html">Try Again!</a>
+          <a href="index.html">Play Again!</a>
         </div>
         `;
   }
@@ -118,8 +114,6 @@ function victory() {
     if (results.length === letters.length && results[i] === "true") {
       console.log("ok");
       manBox.style.backgroundImage = "url(assets/images/imgvic.png)";
-     // messageBox.style.backgroundColor = "aqua";
-     messageBox.style.backgroundImage = "url(assets/images/piece.png)";
       messageBox.innerHTML = `
         <h3>Congratulations! You found the word!</h3>
         <h4><strong>${pickedWord}</strong>:</h4> 

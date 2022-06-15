@@ -23,6 +23,7 @@ h2, h3, h4{
     font-family: Schoolbell, cursive;
     color: black;   
     text-align: center; 
+    font-size: 150%;
 }
 
 #input-box {
@@ -55,12 +56,8 @@ h2, h3, h4{
     display: inline-block;
 }
 #final-message {
-    
-    background-image: url(assets/images/piece.png);
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 20%;
-    height: 20rem;
+    height: 25rem;
     text-align: center;
     margin-right: 4rem;
     padding-top: 2rem;
