@@ -44,7 +44,7 @@ document.getElementById("boxes-area").innerHTML = boxes;
  */
 let inputBox = document.getElementById("input-box");
 var inputLettersList = [];
-let doomed = document.getElementById("theman");
+let manBox = document.getElementById("theman");
 let letterContainer = document.getElementsByClassName("container");
 let letters = document.getElementsByClassName("word-letters");
 let messageBox = document.getElementById("final-message");
@@ -66,8 +66,7 @@ function keyPressed(event) {
     console.log("true");
     for (i = 0; i < pickedWord.length; i++) {
       if (event.key === pickedWord[i]) {
-        letters[i].style.visibility = "visible";
-        letterContainer[i].style.backgroundColor = "yellow"   
+        letters[i].style.visibility = "visible"; 
       } 
     }
     victory();
@@ -87,7 +86,7 @@ var n = 0;
 function incrementWrongLetter() {
   if (n < 6) {
     n++;
-    doomed.style.backgroundImage = `url(assets/images/img${n}.png)`;
+    manBox.style.backgroundImage = `url(assets/images/img${n}.png)`;
   }
   if (n === 6) {
     console.log("wrong");
@@ -107,14 +106,14 @@ function incrementWrongLetter() {
 function victory() {
   let results = [];
   for (i = 0; i < letters.length; i++) {
-    if (letterContainer[i].style.backgroundColor === "yellow") {
+    if (letters[i].style.visibility === "visible") {
       results.push("true")
     } else {
       results.push("false")
     }
     if (results.length === letters.length && results[i] === "true") {
       console.log("ok");
-      doomed.style.backgroundImage = "url(assets/images/imgvic.png)";
+      manBox.style.backgroundImage = "url(assets/images/imgvic.png)";
       messageBox.style.backgroundColor = "aqua";
       messageBox.innerHTML = `
         <h3>Congratulations! You found the word!</h3>

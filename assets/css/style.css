@@ -8,35 +8,38 @@
     border: none;   
 }
 body {
-     background-image: 
-     background-repeat: no-repeat;
-     background-size: cover;
+    background-image: url(../images/stock-photo-white-crumpled-paper-blue-graph-lines-515587750.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
     font-family: "Finger Paint";
     font-size: 300%;
     text-align: center;
-    padding: 3rem;
+    padding-bottom: 3rem;
 }    
 h2, h3 {
     font-family: Schoolbell, cursive;
     color: black;   
     text-align: center; 
+    font-size: 150%;
 }
 
 #input-box {
     background-image: url(../images/input-bkg.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 30%;
+    width: 25%;
     height: 20rem;
     float: left;
     margin-top: 6rem;
+    margin-left: 4rem;
+   
 }
 #theman {
     background-image: url(../images/img0.png);
-    width: 50%;
+    width: 40%;
     height: 25rem;
     background-repeat: no-repeat;
     background-position: center;
@@ -52,16 +55,15 @@ h2, h3 {
     float: right;   
 }
 #boxes-area {
+    padding-top: 50px;
     display: block;
     text-align: center;
 }
 .container {
-    color: white;
     width: 50px;
     height: 50px;
-    border: 1px solid grey;
-    border-radius: 4px;
-    background-color: blue;
+    background-image: url(../images/space.png);
+    background-size: contain;
     margin: 2px;
     display: inline-block;
     text-align: center;
@@ -73,4 +75,8 @@ h2, h3 {
 #input-box > h2 {
    padding-top: 3rem; 
 }
+#input-box > h3 {
+    padding: 60px; 
+ }
+ 
 
