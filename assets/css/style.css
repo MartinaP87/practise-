@@ -8,7 +8,7 @@
     border: none;    
 }   
 body {
-    background-image: url(../images/stock-photo-white-crumpled-paper-blue-graph-lines-515587750.jpg);
+    background-image: url(../images/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -27,7 +27,7 @@ h2, h3, h4{
 }
 
 #input-box {
-    background-image: url(../images/input-bkg.png);
+    background-image: url(../images/input-background.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 25%;
@@ -37,11 +37,11 @@ h2, h3, h4{
     margin-left: 4rem;  
 }
 #input-box > h2 {
-    font-size: 200%;
-   padding-top: 3rem; 
+    font-size: 180%;
+   padding-top: 2rem; 
 }
 #input-box > h3 {
-    padding: 60px; 
+    padding: 40px; 
     font-size: 150%;
  }
  
@@ -56,23 +56,33 @@ h2, h3, h4{
     display: inline-block;
 }
 #final-message {
-    width: 20%;
-    height: 25rem;
+    display: none;
+    width: 40%;
+    height: 30rem;
     text-align: center;
-    margin-right: 4rem;
-    padding-top: 2rem;
+    margin-right: 30px;
+    padding-top: 70px;
     float: right;   
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#final-message > h3 {
+    padding: 20px 40px;
+}
+#final-message > h4 {
+    font-family: 'Times New Roman', Times, serif;
 }
 #final-message > p {
-    padding-top : 10px;
-    padding-bottom: 20px;
+    padding : 10px 40px 20px 40px;
+    font-family: 'Times New Roman', Times, serif;
+    
 }
 #boxes-area {
     padding-top: 50px;
     display: block;
     text-align: center;
 }
-.container {
+.letter-container {
     width: 50px;
     height: 50px;
     background-image: url(../images/space.png);
@@ -90,7 +100,7 @@ h2, h3, h4{
     width: 80%;
     background-image: url(../images/rubber.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 70%;
     background-position: center;
     padding-top: 15px;
 }
