@@ -64,7 +64,7 @@ let wordsList = [
   {word: "vaporize", definition: "To turn into vapor."},
   {word: "voodoo", definition: "Any of a group of related religious practices found chiefly in and around the Caribbean, particularly in Haiti and Louisiana."},
   {word: "vortex", definition: "A whirlwind, whirlpool, or similarly moving matter in the form of a spiral or column."},
-  {word: "walkway", definition: "A whirlwind, whirlpool, or similarly moving matter in the form of a spiral or column."},
+  {word: "walkway", definition: "A clearly defined path for pedestrians."},
   {word: "wheezy", definition: "That breathe hard, and with an audible piping or whistling sound, as persons affected with asthma."},
   {word: "wimp", definition: " someone who lacks confidence or courage, is weak, ineffectual, irresolute and wishy-washy"},
   {word: "witchcraft", definition: "The practice of witches; magic, sorcery or the use of supernatural powers to influence or predict events."},
@@ -158,7 +158,8 @@ function incrementWrongLetter() {
         <h3>Oh nooo!</h3>
         <h3>You haven't found the word this time... but, if you learn from a loss you have not lost!</h3>
         <h3>The word was:</h3>
-        <p><strong>${pickedWord}</strong>: <em>${pickedWordMeaning}</em></p>
+       <h4><strong>${pickedWord}:</strong></h4>  
+       <p><em>${pickedWordMeaning}</em></p>
         <div class="restart">
           <a href="index.html">Play Again!</a>
         </div>
