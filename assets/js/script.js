@@ -189,7 +189,7 @@ function victory() {
         <h4><strong>${pickedWord}</strong>:</h4> 
         <p><em>${pickedWordMeaning}</em></p>
         <div class="restart">
-          <a href="index.html">Try Again!</a>
+          <a href="index.html">Play Again!</a>
         </div>
         `;
     }
