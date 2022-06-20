@@ -72,62 +72,62 @@ let wordsList = [
   {word: "wristwatch", definition:"A watch that is worn on a strap or band fastened around the wrist"},
   {word: "wyvern", definition: "A draconian creature possessing wings, only two legs and usually a barbed tail."}
 ];
+//Declare all global variables
+let chosenObject = pickObject();
+let indObject = wordsList.indexOf(chosenObject);
+let pickedWord = chosenObject.word;
+let pickedWordMeaning = chosenObject.definition;
+let inputBox = document.getElementById("input-box");
+let inputLettersList = [];
+let manBox = document.getElementById("theman");
+let letters = document.getElementsByClassName("word-letters");
+let finalMessageBox = document.getElementById("final-message");
+let lastWindow = document.getElementById("last-window");
+let playAgain = document.getElementById("restart");
+let numberOfAttempts = 0;
+const maxNumberOfAttempts = 7
+// Add event listener to the body
+document.body.addEventListener("keypress", keyPressed); 
+//Add event listener to button
+playAgain.addEventListener("click", restart);
 
 /**
- * The first game function, called when the script is first loaded
- * and after the user's answer has been processed
+ * Function that picks a random object from the wordsList array.
  */
- function pickWord() {
+
+function pickObject() {
   let ind1 = Math.floor(Math.random() * wordsList.length);
+  console.log(ind1)
   return wordsList[ind1];
 }
-let wordAndMeaning = pickWord();
-console.log(wordAndMeaning);
-
-let pickedWord = wordAndMeaning.word;
-let pickedWordMeaning = wordAndMeaning.definition;
-
-console.log(pickedWord);
-console.log(pickedWordMeaning);
-
 /**
- * Create divs in base of the number of letters with their respective letters in them.
+ * Main function: it creates divs based on how many letters are in the word of the chosen object;
+ * each box has the respective letter in it.
  */
-let boxes = '';
-for (let i = 0; i < pickedWord.length; i++) {
-  boxes += `
+function buildBoxes() {
+  let boxes = '';
+  for (let i = 0; i < pickedWord.length; i++) {
+    boxes += `
      <div class="letter-container">
      <h2 class="word-letters">${pickedWord[i]}</h2>
      </div>
      `;
+  }
+  document.getElementById("boxes-area").innerHTML = boxes;
 }
-document.getElementById("boxes-area").innerHTML = boxes;
-
 /**
- * This function shows the letter in its position if correct 
- * and call change the function incrementWrongAnswer if wrong
+ * Function to check if the key pressed is included in the picked word; 
+ * if it is, it reveals it and trigger the victory function,  
+ * otherwise it starts to build the hangman;
  */
-let inputBox = document.getElementById("input-box");
-var inputLettersList = [];
-let manBox = document.getElementById("theman");
-let letters = document.getElementsByClassName("word-letters");
-let finalMessageBox = document.getElementById("final-message");
-
-document.body.addEventListener("keypress", keyPressed);
-
 function keyPressed(event) {
-
   // Add key pressed in the input box. 
   inputLettersList.push(`  ${event.key}`);
   inputBox.innerHTML = `
         <h2>Letters tried:</h2>
         <h3> ${inputLettersList}</h3>
         `;
-
-  //Check if the key pressed is included in the picked word; 
-  //if it is reveal it and trigger the victory fuction otherwise start to build the hangman;
   if (pickedWord.includes(event.key)) {
-    console.log("true");
     for (let i = 0; i < pickedWord.length; i++) {
       if (event.key === pickedWord[i]) {
         letters[i].style.visibility = "visible";
@@ -135,40 +135,34 @@ function keyPressed(event) {
     }
     victory();
   } else {
-    incrementWrongLetter();
+    buildHangman();
   }
-  if ( finalMessageBox.innerHTML) {
-    document.body.removeEventListener("keypress", keyPressed);
-    console.log("bastaaaa");
+} 
+/**
+ * The function changes the image every time the answer is wrong;
+ * the last image ends the game, resulting in the user's failure.
+ */
+function buildHangman() {
+  if (numberOfAttempts < maxNumberOfAttempts) {
+    numberOfAttempts++;
+    manBox.style.backgroundImage = `url(assets/images/img${numberOfAttempts}.png)`;
   }
-}
-
-// This function change the image every time the answer is wrong 
-var n = 0;
-
-function incrementWrongLetter() {
-  if (n < 6) {
-    n++;
-    manBox.style.backgroundImage = `url(assets/images/img${n}.png)`;
-  }
-  if (n === 6) {
-    console.log("wrong");
+  if (numberOfAttempts === maxNumberOfAttempts) {
+    incrementLost();
     changeStyles();
+    removeObject()
     finalMessageBox.innerHTML = `
-        <h3>Oh nooo!</h3>
-        <h3>You haven't found the word this time... but, if you learn from a loss you have not lost!</h3>
-        <h3>The word was:</h3>
+       <h3>Oh nooo!<br>You haven't found the word this time... but, if you learn from a loss you have not lost!<br>The word was:</h3>
        <h4><strong>${pickedWord}:</strong></h4>  
        <p><em>${pickedWordMeaning}</em></p>
-        <div class="restart">
-          <a href="index.html">Play Again!</a>
-        </div>
         `;
+    document.body.removeEventListener("keypress", keyPressed);
   }
 }
 
-// Define when the user wins 
-
+/**
+ *  Function that defines when the user wins 
+ */
 function victory() {
   let results = [];
   for (let i = 0; i < letters.length; i++) {
@@ -177,30 +171,72 @@ function victory() {
     } else {
       results.push("false");
     }
-    console.log(results);
-    
       if (results.length === letters.length && results[i] === "true" && results.includes("false") === false) {
-      console.log(results.length);
-      console.log(letters.length);
-      console.log("ok");
+      incrementWon();
       changeStyles();
+      removeObject();
       manBox.style.backgroundImage = "url(assets/images/imgvic.png)";
       finalMessageBox.innerHTML = `
         <h3>Congratulations! You found the word!</h3>
         <h4><strong>${pickedWord}</strong>:</h4> 
         <p><em>${pickedWordMeaning}</em></p>
-        <div class="restart">
-          <a href="index.html">Play Again!</a>
-        </div>
         `;
-    }
-    
-      
+        document.body.removeEventListener("keypress", keyPressed);
+    }      
   }
 }
+/**
+ * Sets new styling properties when the game is over
+ */
 function changeStyles() {
-  manBox.style.margin = "70px 0px 0px 15%";
+  manBox.style.margin = "15% 0 0 40%";
+  manBox.style.width = "45%";
+  manBox.style.height = "50vw";
   inputBox.style.display = "none";
-  finalMessageBox.style.display = "inline";
-  finalMessageBox.style.backgroundImage = "url(assets/images/piece.png)";
+  lastWindow.style.display = "inline";
 }
+/**
+ * Gets the current score of won games and increments it by 1
+ */
+function incrementWon() {
+  let wonScore = parseInt(document.getElementById("won").innerText);
+  document.getElementById("won").innerText = ++wonScore;
+}
+/**
+* Gets the current score of lost games and increments it by 1
+*/
+function incrementLost() {
+  let lostScore = parseInt(document.getElementById("lost").innerText);
+  document.getElementById("lost").innerText = ++lostScore;
+}
+/**
+ * Remove the chosen object from the wordsList array, 
+ * so it won't appear in the next game
+ */
+ function removeObject () {
+  wordsList.splice(indObject, 1);
+}
+/**
+ * Restarts the game resetting the screen to the initial set up;
+ * sets new values to the global variables;
+ * calls the buildBoxes function (in which is called the pickWord function);
+ * and adds the event listener to the body.
+ */
+ function restart () {
+  lastWindow.style.display = "none";
+  manBox.style.backgroundImage = "url(assets/images/img0.png)";
+  manBox.style.margin = "0px 15% 0 40%";
+  inputBox.style.display = "inline";
+  inputBox.innerHTML = "<h2>Letters tried:</h2>";
+  let newChosenObject = pickObject();
+  indObject = wordsList.indexOf(newChosenObject);
+  console.log(indObject);
+  pickedWord = newChosenObject.word;
+  console.log(pickedWord);
+  pickedWordMeaning = newChosenObject.definition;
+  buildBoxes();
+  inputLettersList = [];
+  numberOfAttempts = 0;
+  document.body.addEventListener("keypress", keyPressed);
+}
+buildBoxes();

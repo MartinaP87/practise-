@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- font awesome and google fonts -->
-
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <script src="jquery-1.11.3.min.js"></script>
-  <title>game</title>
+  <title>Hangman</title>
 </head>
-
 <body">
+<header>
   <h1>HANGMAN</h1>
-
+    <div class="face">
+      <img src="assets/images/won.png" alt="happy face">
+      <span id="won">0</span></p>
+    </div>
+    <div class="face">
+       <img src="assets/images/lost.png" alt="dead face">
+       <span id="lost">0</span></p>
+    </div> 
+</header>
+  
+   <div id="last-window">
+    <div id="final-message"></div>
+    <button id="restart">Play again!</button>
+   </div>
+  
   <div id="input-box">
-    <h2>Letters tried:</h2>
+    <h2>Instructions:</h2>
+    <p>Try to find the secret word by typing letters.
+      If your guess is correct, your letter will appear in the respective space.
+      However, every wrong guess will bring you closer to being "hanged".<br>Have Fun!!!</p>
   </div>
   <div id="theman"></div>
-  <div id="final-message"></div>
-
-
+ 
   <div id="boxes-area"></div>
 
-  <footer><p>bo</p></footer>
+  
 
   <script src="assets/js/script.js"></script>
   </body>
